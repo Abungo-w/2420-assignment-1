@@ -2,14 +2,16 @@
 ## Creating an Arch Linux Droplet using `doctl`
 ### Introduction
 This is a tutorial that will teach you step-by-step how to:
-- Create SSH keys on your local machine.
-- Install and configure `doctl`.
-- Configure files with cloud-init
-- Set Up an Arch Linux Droplet using `doctl` command-line tool.
-- Connect to your droplet from your local machine using SSH
+- [Create SSH keys on your local machine.](#SSH)
+- [Install and configure `doctl`.](#doctl)
+- [Configure files with cloud-init](#cloud)
+- [Set Up an Arch Linux Droplet using `doctl` command-line tool.](#droplet)
+- [Connect to your droplet from your local machine using SSH](#connect)
+
+<a name="SSH"></a>
 
 ### Creating the SSH keys on your local machine
-SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1](#refernce).
+SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[[1]](#refernce).
 
 Creating an SSH key on your local machine will allow you to link your computer to a Droplet.
 
@@ -43,6 +45,8 @@ If you see the file `doctl-key` and `doctl-key.pub` then you have successfully c
 ![Files in the directory](/assets/SSH_key_check.png)
 
 **Caution:** `doctl-key` is your private key. Do not share it. `doctl-key.pub` is the public key that you can share.
+
+<a name="doctl"></a>
 
 ### Install and configure `doctl`
 `doctl` allows you to work with the DigitalOcean API using commands in your computer's terminal[5].
@@ -127,6 +131,8 @@ If you follow the steps correctly, it should show you this:
 
 You have now sucessfullt connected your SSH key to DigitalOcean!
 
+<a name="cloud"></a>
+
 ### Configuring files with cloud-init
 Cloud-Init is an open-source tool used for configuring cloud instances during their initialization process[12]. 
 
@@ -188,6 +194,8 @@ The file should look like this:
 4. Press **Esc** on your keyboard then type in `:wq` to save and exit the file.
 
 You have now created a `.yaml` cloud-init configuration file!
+
+<a name="droplet"></a>
 
 ### Setting Up an Arch Linux Droplet using `doctl` command-line tool.
 Now that we have finished setting up `doctl` and cloud-init file, it's time to create a Droplet using `doctl`.
@@ -259,6 +267,8 @@ This is what it looks like:
 4. Type `exit` to log out
 
 You have now succesfully created a Arch Linux droplet using `doctl`!
+
+<a name="connect"></a>
 
 ### Connecting to your droplet from your local machine using SSH
 1. Use the following command to create a `config` file on your local machine:
