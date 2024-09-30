@@ -332,4 +332,4 @@ Congrats! You made it to the end of the tutorial!
 
 [14]“Home · tmux/tmux Wiki,” GitHub. https://github.com/tmux/tmux/wiki
 
-[15]scop, “GitHub - scop/bash-completion: Programmable completion functions for bash,” GitHub, May 09, 2024. https://github.com/scop/bash-completion (accessed Sep. 29, 2024).
+[15]scop, “GitHub - scop/bash-completion: Programmable completion functions for bash,” GitHub, May 09, 2024. https://github.com/scop/bash-completion.
