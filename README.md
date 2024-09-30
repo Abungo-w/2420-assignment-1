@@ -1,12 +1,12 @@
 # 2420-assignment-1
 ## Creating an Arch Linux Droplet using `doctl`
 ### Introduction
-This is a tutorial that will teach you step-by-step how to:
-- [Create SSH keys on your local machine.](#SSH)
-- [Install and configure `doctl`.](#doctl)
-- [Configure files with cloud-init](#cloud)
-- [Set Up an Arch Linux Droplet using `doctl` command-line tool.](#droplet)
-- [Connect to your droplet from your local machine using SSH](#connect)
+This is a tutorial on how to create an Arch Linux Droplet using `doctl` by:
+- [Creating SSH keys on your local machine.](#SSH)
+- [Installing and configuring `doctl`.](#doctl)
+- [Configuring files with cloud-init](#cloud)
+- [Setting Up an Arch Linux Droplet using `doctl` command-line tool.](#droplet)
+- [Connecting to your droplet from your local machine using SSH](#connect)
 
 <a name="SSH"></a>
 
@@ -48,7 +48,7 @@ If you see the file `doctl-key` and `doctl-key.pub` then you have successfully c
 
 <a name="doctl"></a>
 
-### Install and configure `doctl`
+### Installing and configuring `doctl`
 `doctl` allows you to work with the DigitalOcean API using commands in your computer's terminal[[5]](#refernce).
 
 #### Step 1: Installing `doctl`
