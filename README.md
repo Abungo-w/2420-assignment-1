@@ -9,7 +9,7 @@ This is a tutorial that will teach you step-by-step how to:
 - Connect to your droplet from your local machine using SSH
 
 ### Creating the SSH keys on your local machine
-SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1][1].
+SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1](#refernce).
 
 Creating an SSH key on your local machine will allow you to link your computer to a Droplet.
 
@@ -292,8 +292,9 @@ If you are able to login then you have succesfully connected your droplet to you
 
 Congrats! You made it to the end of the tutorial!
 
+<a name="refernce"></a>
 ### Refernce
-[1][1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
+[1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
 
 [2]“Ssh-keygen is a tool for creating new authentication key pairs for SSH. This is a tutorial on its use, and covers several special use cases.,” www.ssh.com. https://www.ssh.com/academy/ssh/keygen
 
