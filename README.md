@@ -1,7 +1,7 @@
 # 2420-assignment-1
 ## Creating an Arch Linux Droplet using `doctl`
 ### Introduction
-This tutorial will teach you step-by-step how to:
+This is a tutorial that will teach you step-by-step how to:
 - Create SSH keys on your local machine.
 - Install and configure `doctl`.
 - Setting Up an Arch Linux Droplet using `doctl` command-line tool.
@@ -63,14 +63,17 @@ Now that you have installed `doctl`, we
 2. Select **API** in the menu on the left side.
 
 ![API in the menu](/assets/API.png)
+
 3. Click **Generate New Token**
 
 ![generate new token](/assets/new_token.png)
+
 4. Type in a Token Name
 5. Select **Full Access**
 
 It should look something like this:
 ![creating token](/assets/creating_token.png)
+
 6. Click **Generate Token**
 
 #### Step 3: Connecting your Personal Access Token to `doctl`
@@ -84,6 +87,7 @@ doctl auth init --context <name>
 2. Copy and paste your Personal Access Token from DigitalOcean when it ask you to "Enter your access token".
 
 ![connecting the token](/assets/doctl_auth.png)
+
 3. Switch to your account by using the following command:
 ```
 doctl auth switch --context <name>
@@ -119,6 +123,7 @@ doctl compute ssh-key create "<key name>" --public-key "<Your public key here>"
 
 If you follow the steps correctly, it should show you this:
 ![Example](/assets/connecting_ssh_key)
+
 You have now sucessfullt connected your SSH key to DigitalOcean!
 
 ### Configuring files with cloud-init
@@ -158,6 +163,7 @@ disable_root: true
 ```
 **Note:** You need to copy and paste your SSH public key where it says `<your public key here>` inside of `ssh-authorized-keys:`
 ![ssh_authorized_key](/assets/ssh_auth_key.png)
+
 - `#cloud-config` tells the file that it is a cloud-init configuration[13].
 - `users:` adds user to the system[13].
 - `name:` user's login name[13].
@@ -177,6 +183,7 @@ disable_root: true
 
 The file should look like this:
 ![cloud-init file](/assets/cloud_init_file.png)
+
 4. Press **Esc** on your keyboard then type in `:wq` to save and exit the file.
 
 You have now created a `.yaml` cloud-init configuration file!
@@ -191,6 +198,7 @@ We need to find a id for project, Arch Linux image, and SSH key so we can use it
 doctl projects list
 ```
 ![project list](/assets/project_list.png)
+
 - `doctl projects list` retrieves a list of projects on your DigitalOcean account[5].
 
 There should be a project listed with its id.
@@ -200,6 +208,7 @@ There should be a project listed with its id.
 doctl compute image list-user
 ```
 ![Arch Linux image](/assets/linux_image.png)
+
 - `doctl compute image list-user` list images you have uploaded to your account[5].
 
 There should be a Arch Linux image listed with its id.
@@ -228,6 +237,7 @@ doctl compute droplet create <droplet name> --project-id <project id> --image <a
 
 It should look like this if you use command correctly:
 ![create droplet](/assets/create_droplet.png)
+
 You can check if you have created the droplet with the following command:
 ```
 doctl compute droplet list --format Name
@@ -237,17 +247,31 @@ if it shows the droplet name you just created then you have completed all the st
 
 ### Refernce
 [1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
+
 [2]“Ssh-keygen is a tool for creating new authentication key pairs for SSH. This is a tutorial on its use, and covers several special use cases.,” www.ssh.com. https://www.ssh.com/academy/ssh/keygen
+
 [3]“Ed25519 signing — Cryptography 38.0.0.dev1 documentation,” cryptography.io. https://cryptography.io/en/latest/hazmat/primitives/asymmetric/ed25519/
+
 [4]“Tilde Expansion (The GNU C Library),” Gnu.org, 2024. https://www.gnu.org/software/libc/manual/html_node/Tilde-Expansion.html#:~:text=It (accessed Sep. 29, 2024).
+
 [5]https://docs.digitalocean.com/reference/doctl/.
+
 [6]“What is the sudo (su ‘do’) command-line utility? – TechTarget Definition,” Security. https://www.techtarget.com/searchsecurity/definition/sudo-superuser-do#:~:text=Sudo%20is%20a%20command%2Dline
+
 [7]“pacman - ArchWiki,” wiki.archlinux.org. https://wiki.archlinux.org/title/pacman
+
 [8]https://docs.digitalocean.com/products/droplets/how-to/create/.
+
 [9]https://docs.digitalocean.com/reference/doctl/reference/auth/init/.
+
 [10]https://docs.digitalocean.com/reference/doctl/reference/.
+
 [11]GeeksforGeeks, “Cat Command in Linux with Examples - GeeksforGeeks,” GeeksforGeeks, Sep. 14, 2017. https://www.geeksforgeeks.org/cat-command-in-linux-with-examples/
+
 [12]“Introduction to cloud-init - cloud-init 24.2 documentation,” cloudinit.readthedocs.io. https://cloudinit.readthedocs.io/en/latest/explanation/introduction.html
+
 [13]https://cloudinit.readthedocs.io/en/latest/reference/examples.html.
+
 [14]“Home · tmux/tmux Wiki,” GitHub. https://github.com/tmux/tmux/wiki
+
 [15]scop, “GitHub - scop/bash-completion: Programmable completion functions for bash,” GitHub, May 09, 2024. https://github.com/scop/bash-completion (accessed Sep. 29, 2024).
