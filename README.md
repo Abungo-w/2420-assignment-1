@@ -9,7 +9,7 @@ This is a tutorial that will teach you step-by-step how to:
 - Connect to your droplet from your local machine using SSH
 
 ### Creating the SSH keys on your local machine
-SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1].
+SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1][1].
 
 Creating an SSH key on your local machine will allow you to link your computer to a Droplet.
 
@@ -123,7 +123,7 @@ doctl compute ssh-key create "<key name>" --public-key "<Your public key here>"
 - `--public-key` is key contents[11].
 
 If you follow the steps correctly, it should show you this:
-![Example](/assets/connecting_ssh_key)
+![Example](/assets/connecting_ssh_key.png)
 
 You have now sucessfullt connected your SSH key to DigitalOcean!
 
@@ -288,10 +288,12 @@ ssh <name>
 ```
 **Note:** <name> is the name you put for `Host` in the config file
 
+If you are able to login then you have succesfully connected your droplet to your local machine.
+
 Congrats! You made it to the end of the tutorial!
 
 ### Refernce
-[1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
+[1][1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
 
 [2]“Ssh-keygen is a tool for creating new authentication key pairs for SSH. This is a tutorial on its use, and covers several special use cases.,” www.ssh.com. https://www.ssh.com/academy/ssh/keygen
 
