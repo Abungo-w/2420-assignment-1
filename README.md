@@ -272,7 +272,7 @@ Host <name>
     HostName <droplet Public IPv4 Address>
     User <username in your cloud-init file>
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/do-key
+    IdentityFile ~/.ssh/doctl-key
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
 ```
