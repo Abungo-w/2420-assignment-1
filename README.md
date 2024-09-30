@@ -22,12 +22,12 @@ Creating an SSH key on your local machine will allow you to link your computer t
 ssh-keygen -t ed25519 -f ~/.ssh/doctl-key -C "Your name here"
 ```
 **Note:** "Your name here" can be any name you want for the SSH key.
-- `ssh-keygen` is the command to create SSH keys[2].
-- `-t` selects the type of algorithm to create the SSH key[2].
-- `ed25519` is the algorithm used to create the SSH key[3].
-- `-f` specifies name of the file in which to store the create SSH key[2].
-- `~` represents the current home directory[4].
-- `-C` provide a comment for the key[2].
+- `ssh-keygen` is the command to create SSH keys[[2]](#refernce).
+- `-t` selects the type of algorithm to create the SSH key[[2]](#refernce).
+- `ed25519` is the algorithm used to create the SSH key[[3]](#refernce).
+- `-f` specifies name of the file in which to store the create SSH key[[2]](#refernce).
+- `~` represents the current home directory[[4]](#refernce).
+- `-C` provide a comment for the key[[2]](#refernce).
 
 Its going to ask you if you want to enter a passphrase. This is optional, its extra protection for your SSH key, press Enter to skip it.
 
@@ -49,7 +49,7 @@ If you see the file `doctl-key` and `doctl-key.pub` then you have successfully c
 <a name="doctl"></a>
 
 ### Install and configure `doctl`
-`doctl` allows you to work with the DigitalOcean API using commands in your computer's terminal[5].
+`doctl` allows you to work with the DigitalOcean API using commands in your computer's terminal[[5]](#refernce).
 
 #### Step 1: Installing `doctl`
 We will be installing `doctl` in an exsiting Arch Linux droplet with `pacman`.
@@ -57,9 +57,9 @@ We will be installing `doctl` in an exsiting Arch Linux droplet with `pacman`.
 ```
 sudo pacman -S doctl
 ```
-`sudo` allows you to execute a command as the superuser[6].
-`pacman` is a package manager[7].
-`-S` to install a package from the remote repository[7].
+`sudo` allows you to execute a command as the superuser[[6]](#refernce).
+`pacman` is a package manager[[7]](#refernce).
+`-S` to install a package from the remote repository[[7]](#refernce).
 
 Now that you have installed `doctl`, we 
 
@@ -87,8 +87,8 @@ It should look something like this:
 doctl auth init --context <name>
 ```
 **note:** <name> is any name you want for `--context`
-- `doctl auth init` allows you to initialize doctl with a token[9].
-- `--context` allows you to add authentication for multiple accounts[9].
+- `doctl auth init` allows you to initialize doctl with a token[[9]](#refernce).
+- `--context` allows you to add authentication for multiple accounts[[9]](#refernce).
 2. Copy and paste your Personal Access Token from DigitalOcean when it ask you to "Enter your access token".
 
 ![connecting the token](/assets/doctl_auth.png)
@@ -98,7 +98,7 @@ doctl auth init --context <name>
 doctl auth switch --context <name>
 ```
 **note:** For this command, <name> here is the name you used from the previous command `doctl auth init --context <name>`.
-- `switch` allows you to switch between authentication contexts you’ve already created[9].
+- `switch` allows you to switch between authentication contexts you’ve already created[[9]](#refernce).
 
 ![connecting the token](/assets/doctl_switch.png)
 
@@ -114,7 +114,7 @@ Make sure you have created an SSH key already
 ```
 cat ~/.ssh/doctl-key.pub
 ```
-- `cat` views content of a file[11].
+- `cat` views content of a file[[11]](#refernce).
 
 It should return your public key.
 
@@ -123,8 +123,8 @@ It should return your public key.
 doctl compute ssh-key create "<key name>" --public-key "<Your public key here>"
 ```
 **Note:** `<key name>` is a name you want to give your key, while `<Your public key here>` is the public key you got from the previous step.
-- `doctl compute ssh-key create` add a new SSH key to your DigitalOcean account[11].
-- `--public-key` is key contents[11].
+- `doctl compute ssh-key create` add a new SSH key to your DigitalOcean account[[11]](#refernce).
+- `--public-key` is key contents[[11]](#refernce).
 
 If you follow the steps correctly, it should show you this:
 ![Example](/assets/connecting_ssh_key.png)
@@ -171,22 +171,22 @@ disable_root: true
 **Note:** You need to copy and paste your SSH public key where it says `<your public key here>` inside of `ssh-authorized-keys:`
 ![ssh_authorized_key](/assets/ssh_auth_key.png)
 
-- `#cloud-config` tells the file that it is a cloud-init configuration[13].
-- `users:` adds user to the system[13].
-- `name:` user's login name[13].
-- `primary group:` defines the primary group[13].
-- `Groups:` additional groups to add the user to(optional)[13].
-- `sudo: ['ALL=(ALL) NOPASSWD:ALL']` allow a user unrestricted sudo access[13].
-- `shell: /bin/bash` path of the shell[13].
-- `ssh-authorized-keys:` adds key to user's authorized keys file[13].
+- `#cloud-config` tells the file that it is a cloud-init configuration[[13]](#refernce).
+- `users:` adds user to the system[[13]](#refernce).
+- `name:` user's login name[[13]](#refernce).
+- `primary group:` defines the primary group[[13]](#refernce).
+- `Groups:` additional groups to add the user to(optional)[[13]](#refernce).
+- `sudo: ['ALL=(ALL) NOPASSWD:ALL']` allow a user unrestricted sudo access[[13]](#refernce).
+- `shell: /bin/bash` path of the shell[[13]](#refernce).
+- `ssh-authorized-keys:` adds key to user's authorized keys file[[13]](#refernce).
 - - `<your public key> ` is the public key you have created.
-- `packages:` installs the following packages[13].
+- `packages:` installs the following packages[[13]](#refernce).
 -- `neovim` is a text editor.
--- `tmux` is a terminal multiplexer[14].
+-- `tmux` is a terminal multiplexer[[14]](#refernce).
 -- `htop` is an interactive process viewer.
 -- `wget` retrieves content from web servers.
--- `bash-completion` is a command completion for the Bash shell[15].
-- `disable_root: true` disables root access via ssh[13].
+-- `bash-completion` is a command completion for the Bash shell[[15]](#refernce).
+- `disable_root: true` disables root access via ssh[[13]](#refernce).
 
 The file should look like this:
 ![cloud-init file](/assets/cloud_init_file.png)
@@ -208,7 +208,7 @@ doctl projects list
 ```
 ![project list](/assets/project_list.png)
 
-- `doctl projects list` retrieves a list of projects on your DigitalOcean account[5].
+- `doctl projects list` retrieves a list of projects on your DigitalOcean account[[5]](#refernce).
 
 There should be a project listed with its id.
 
@@ -218,7 +218,7 @@ doctl compute image list-user
 ```
 ![Arch Linux image](/assets/linux_image.png)
 
-- `doctl compute image list-user` list images you have uploaded to your account[5].
+- `doctl compute image list-user` list images you have uploaded to your account[[5]](#refernce).
 
 There should be a Arch Linux image listed with its id.
 
@@ -236,13 +236,13 @@ doctl compute droplet create <droplet name> --project-id <project id> --image <a
 ```
 **Note**: Use any name you want for `<droplet name>`. Use the project, image, SSH key id you have found in step 1  for`<project id>`, `<arch linux image id>`, and `<ssh key id>`:
 
-- `doctl compute droplet create` creates a new Droplet on your account[5].
-- `--project-id` id of the project to assign the Droplet to[5].
-- `--image` an id specifying the image to use to create the Droplet[5].
-- `--ssh-keys` list of SSH key id/fingerprint to embed in the Droplet’s root account[5].
-- `--size` is a slug indicating the Droplet’s number of vCPUs, RAM, and disk size(required)[5].
-- `--region` is a slug specifying the region to create the Droplet in[5].
-- `--user-data-file` specify the path to Cloud-init YAML file to run on the Droplet’s first boot.
+- `doctl compute droplet create` creates a new Droplet on your account[[5]](#refernce).
+- `--project-id` id of the project to assign the Droplet to[[5]](#refernce).
+- `--image` an id specifying the image to use to create the Droplet[[5]](#refernce).
+- `--ssh-keys` list of SSH key id/fingerprint to embed in the Droplet’s root account[[5]](#refernce).
+- `--size` is a slug indicating the Droplet’s number of vCPUs, RAM, and disk size(required)[[5]](#refernce).
+- `--region` is a slug specifying the region to create the Droplet in[[5]](#refernce).
+- `--user-data-file` specify the path to Cloud-init YAML file to run on the Droplet’s first boot[[5]](#refernce).
 
 It should look like this if you use command correctly:
 ![create droplet](/assets/create_droplet.png)
