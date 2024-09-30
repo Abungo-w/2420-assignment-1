@@ -4,8 +4,9 @@
 This is a tutorial that will teach you step-by-step how to:
 - Create SSH keys on your local machine.
 - Install and configure `doctl`.
-- Setting Up an Arch Linux Droplet using `doctl` command-line tool.
 - Configure files with cloud-init
+- Set Up an Arch Linux Droplet using `doctl` command-line tool.
+- Connect to your droplet from your local machine using SSH
 
 ### Creating the SSH keys on your local machine
 SSH is a way to securely connect to another computer over the internet. It lets you control the other computer, run commands, and share files between the two machines[1].
@@ -221,7 +222,7 @@ doctl compute ssh-key list
 ![ssh key id](/assets/ssh_key_id.png)
 
 #### Step 2: Creating the droplet
-Use the following commmand to create the droplet:
+1. Use the following commmand to create the droplet:
 ```
 doctl compute droplet create <droplet name> --project-id <project id> --image <arch linux image id> --ssh-keys <ssh key id> --size s-1vcpu-1gb-amd --region sfo3 --user-data-file ~/cloud-init.yaml
 ```
@@ -240,10 +241,54 @@ It should look like this if you use command correctly:
 
 You can check if you have created the droplet with the following command:
 ```
-doctl compute droplet list --format Name
+doctl compute droplet list --format Name,PublicIPv4
 ```
 if it shows the droplet name you just created then you have completed all the steps correcly.
 ![droplet name](/assets/droplet_name.png)
+
+2. Use the following command to initialize your droplet
+```
+ssh -i .ssh/doctl-key <droplet username>@<droplet Public IPv4 Address>
+```
+It will ask you "Are you sure you want to continue connecting (yes/no/[fingerprint])?" if you use command correctly.
+3. Type yes.
+
+This is what it looks like:
+![initial login](/assets/init_login.png)
+
+4. Type `exit` to log out
+
+You have now succesfully created a Arch Linux droplet using `doctl`!
+
+### Connecting to your droplet from your local machine using SSH
+1. Use the following command to create a `config` file on your local machine:
+```
+nvim ~/.ssh/config
+```
+2. Press **i** on keyboard to edit file
+3. Copy and paste the following into the `nvim config` file:
+```
+Host <name>
+    HostName <droplet Public IPv4 Address>
+    User <username in your cloud-init file>
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/do-key
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+```
+**Note:** You can put any name for `<name>`
+
+Here's an example:
+![ssh config file](/assets/ssh_to_droplet.png)
+4. after your done editing, press **Esc** on keyboard, the type `:wq` to save and exit.
+5. Log in to your Arch linux droplet on your local machine
+6. Use the following command in terminal:
+```
+ssh <name>
+```
+**Note:** <name> is the name you put for `Host` in the config file
+
+Congrats! You made it to the end of the tutorial!
 
 ### Refernce
 [1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
