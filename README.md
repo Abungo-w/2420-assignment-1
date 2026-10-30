@@ -303,7 +303,7 @@ If you are able to login then you have succesfully connected your droplet to you
 Congrats! You made it to the end of the tutorial!
 
 <a name="refernce"></a>
-### Refernce
+### References
 [1]“SSH Essentials: Working with SSH Servers, Clients, and Keys,” DigitalOcean. https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys
 
 [2]“Ssh-keygen is a tool for creating new authentication key pairs for SSH. This is a tutorial on its use, and covers several special use cases.,” www.ssh.com. https://www.ssh.com/academy/ssh/keygen
